@@ -6,7 +6,7 @@ Uniqueness: Use words or phrases that are difficult to guess and connect to you.
 no more than 3 repeating characters
 */
 
-let passwordTest = "NabeeL@123";
+let passwordTest = "Nabeel@1231232";
 let hasNumber = 0;
 let hasUpperCase = 0;
 let hasLowerCase = 0;
@@ -33,17 +33,17 @@ function passchecker(paternPara){
     }
 }
 
-if(passwordTest.length > 7){
+if(passwordTest.length > 12){
     hasGoodLength = 1;
 }
 
-if(){
-    
+for(let i = 1;i< passwordTest.length;i++){
+    if( passwordTest.charAt(i-1) === passwordTest.charAt(i) && passwordTest.charAt(i) === passwordTest.charAt(i+1)){
+        hasRepeater = 1;
+    }
 }
 
-passwordStrength = hasNumber + hasUpperCase + hasLowerCase + hasSpecialChar + hasGoodLength + hasRepeater
-
-console.log(passwordStrength)
+passwordStrength = console.log( hasNumber + hasUpperCase + hasLowerCase + hasSpecialChar + hasGoodLength - hasRepeater);
 
 if(passwordStrength > 5){
     console.log("Strong Password");
