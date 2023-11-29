@@ -1,17 +1,10 @@
-/* 
-Length: Make your password at least 12 characters long, but 14 or more is better.
-Characters: Include a combination of uppercase and lowercase letters, numbers, symbols, and punctuation.
-Randomness: Avoid using memorable keypaths or personal information.
-Uniqueness: Use words or phrases that are difficult to guess and connect to you. Don't reuse passwords across multiple accounts.
-no more than 3 repeating characters
-*/
-
 let passwordStregthpara = document.querySelector("#passwordStregthpara");
-let passCheckerNumberEl = document.quertSelector("#PassCheckerNumber");
-let passCheckerLowerEl = document.quertSelector("#PassCheckerLower");
-let passCheckerUpperEl = document.quertSelector("#PassCheckerUpper");
-let passCheckerCharEl = document.quertSelector("#PassCheckerChar");
-let passCheckerRepeatEl = document.quertSelector("#PassCheckerRepeat");
+let passCheckerNumberEl = document.querySelector("#PassCheckerNumber");
+let passCheckerLowerEl = document.querySelector("#PassCheckerLower");
+let passCheckerUpperEl = document.querySelector("#PassCheckerUpper");
+let passCheckerCharEl = document.querySelector("#PassCheckerChar");
+let passCheckerRepeatEl = document.querySelector("#PassCheckerRepeat");
+let passCheckerLengthtEl = document.querySelector("#PassCheckerLength");
 
 let passwordStrength = 0;
 let CharPattern = /\!|\@|\#|\%|\&|\|\(|\^|\*|\(|\)|\-|\+|\_|\=|\?|\>|\<|\,|\;\:|\"|\{|\}|\[|\]|\'|\/|\.|\`|\~/;
@@ -64,8 +57,43 @@ function passwordChecker(){
     }
     passwordStrength =  hasNumber + hasUpperCase + hasLowerCase + hasSpecialChar + hasGoodLength - hasRepeater;
 
+    
 
-    console.log(passwordStrength)
+    if(hasNumber){
+        passCheckerNumberEl.innerHTML = "<span class=\"passColor passStronge\">Pass</span>"
+    }else{
+        passCheckerNumberEl.innerHTML = "<span class=\"passColor passWeak\">Fail</span>"
+    }
+
+    if(hasUpperCase){
+        passCheckerUpperEl.innerHTML = "<span class=\"passColor passStronge\">Pass</span>"
+    }else{
+        passCheckerUpperEl.innerHTML = "<span class=\"passColor passWeak\">Fail</span>"
+    }
+
+    if(hasLowerCase){
+        passCheckerLowerEl.innerHTML = "<span class=\"passColor passStronge\">Pass</span>"
+    }else{
+        passCheckerLowerEl.innerHTML = "<span class=\"passColor passWeak\">Fail</span>"
+    }
+
+    if(hasSpecialChar){
+        passCheckerCharEl.innerHTML = "<span class=\"passColor passStronge\">Pass</span>"
+    }else{
+        passCheckerCharEl.innerHTML = "<span class=\"passColor passWeak\">Fail</span>"
+    }
+
+    if(hasGoodLength){
+        passCheckerLengthtEl.innerHTML = "<span class=\"passColor passStronge\">Pass</span>"
+    }else{
+        passCheckerLengthtEl.innerHTML = "<span class=\"passColor passWeak\">Fail</span>"
+    }
+
+    if(hasRepeater){
+        passCheckerRepeatEl.innerHTML = "<span class=\"passColor passWeak\">Fail</span>"
+    }else{
+        passCheckerRepeatEl.innerHTML = "<span class=\"passColor passStronge\">Pass</span>"
+    }
 
     if(passwordStrength > 4){
         passwordStregthpara.innerHTML = "Password Strength: <span class=\"passColor passStronge\"> Strong Password</span>";
