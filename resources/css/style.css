@@ -1,0 +1,76 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin:0;
+    font-family: sans-serif;
+    background-image: url(../img/bg.jpg);
+    background-repeat: repeat;
+    background-size:cover;
+}
+
+.main-container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    max-height: 100%;
+}
+
+.inner-container{
+    width: 500px;
+    margin: auto;
+    padding:30px 15px;
+    background-color:rgb(255 255 255 / 45%);
+    border:2px solid #4dc7f8;
+    border-radius: 5px;
+}
+
+#passwordInput{
+border:1px solid #e3e3e3;
+padding:7px 5px;
+border-radius:2px;
+width:100%;
+}
+
+#passwordInput:focus-visible{
+outline:none;
+}
+
+#passwordStregthpara{
+font-weight:bold;
+color:#4c55d4;
+}
+
+.passColor {
+font-weight:400;
+}
+
+.passWeak{
+color:red;
+}
+
+.passmedium{
+color:#ff8700fa;
+}
+
+.passStronge{
+color:green;
+}
+  
+
+.para-1{
+    font-weight: bold;
+    color: #4c55d4;
+}
+
+.ulTestcase{
+    list-style: none;
+    padding-left:15px;
+    line-height:1.5;
+    font-weight:bold;
+    color:#4c55d4;
+}
+    
+    

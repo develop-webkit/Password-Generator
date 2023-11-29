@@ -6,49 +6,72 @@ Uniqueness: Use words or phrases that are difficult to guess and connect to you.
 no more than 3 repeating characters
 */
 
-let passwordTest = "Nabeel@1231232";
-let hasNumber = 0;
-let hasUpperCase = 0;
-let hasLowerCase = 0;
-let hasSpecialChar = 0
-let hasGoodLength = 0
-let hasRepeater = 0;
+let passwordStregthpara = document.querySelector("#passwordStregthpara");
+let passCheckerNumberEl = document.quertSelector("#PassCheckerNumber");
+let passCheckerLowerEl = document.quertSelector("#PassCheckerLower");
+let passCheckerUpperEl = document.quertSelector("#PassCheckerUpper");
+let passCheckerCharEl = document.quertSelector("#PassCheckerChar");
+let passCheckerRepeatEl = document.quertSelector("#PassCheckerRepeat");
+
 let passwordStrength = 0;
 let CharPattern = /\!|\@|\#|\%|\&|\|\(|\^|\*|\(|\)|\-|\+|\_|\=|\?|\>|\<|\,|\;\:|\"|\{|\}|\[|\]|\'|\/|\.|\`|\~/;
 let upperCasePattern = /[A-Z]/;
 let lowerCasePattern = /[a-z]/;
 let numberPattern = /[0-9]/;
 
-hasNumber = passchecker(numberPattern);
+let hasNumber = false;
+let hasUpperCase = false;
+let hasLowerCase = false;
+let hasSpecialChar = false;
+let hasGoodLength = false;
+let hasRepeater = false;
 
-hasUpperCase = passchecker(upperCasePattern);
+function passwordChecker(){
+    let passwordTest = document.querySelector("#passwordInput").value;
 
-hasSpecialChar = passchecker(CharPattern);
+    hasNumber = false;
+    hasUpperCase = false;
+    hasLowerCase = false;
+    hasSpecialChar = false;
+    hasGoodLength = false;
+    hasRepeater = false;
 
-hasLowerCase = passchecker(lowerCasePattern);
+    hasNumber = paternchecker(numberPattern);
 
-function passchecker(paternPara){
-    if(paternPara.test(passwordTest)){
-        return 1 
+    hasUpperCase = paternchecker(upperCasePattern);
+
+    hasSpecialChar = paternchecker(CharPattern);
+
+    hasLowerCase = paternchecker(lowerCasePattern);
+
+    function paternchecker(paternPara){
+        if(paternPara.test(passwordTest)){
+            return true 
+        }else{
+            return false
+        }
     }
-}
 
-if(passwordTest.length > 12){
-    hasGoodLength = 1;
-}
-
-for(let i = 1;i< passwordTest.length;i++){
-    if( passwordTest.charAt(i-1) === passwordTest.charAt(i) && passwordTest.charAt(i) === passwordTest.charAt(i+1)){
-        hasRepeater = 1;
+    if(passwordTest.length > 12){
+        hasGoodLength = true;
     }
-}
 
-passwordStrength = console.log( hasNumber + hasUpperCase + hasLowerCase + hasSpecialChar + hasGoodLength - hasRepeater);
+    for(let i = 1;i< passwordTest.length;i++){
+        if( passwordTest.charAt(i-1) === passwordTest.charAt(i) && passwordTest.charAt(i) === passwordTest.charAt(i+1)){
+            hasRepeater = true;
+        }
+        console.log("repeat test")
+    }
+    passwordStrength =  hasNumber + hasUpperCase + hasLowerCase + hasSpecialChar + hasGoodLength - hasRepeater;
 
-if(passwordStrength > 5){
-    console.log("Strong Password");
-}else if(passwordStrength > 3){
-    console.log("Medium Password");
-}else{
-    console.log("Weak Password");
+
+    console.log(passwordStrength)
+
+    if(passwordStrength > 4){
+        passwordStregthpara.innerHTML = "Password Strength: <span class=\"passColor passStronge\"> Strong Password</span>";
+    }else if(passwordStrength > 3){
+        passwordStregthpara.innerHTML = "Password Strength: <span class=\"passColor passmedium\"> Medium Password</span>";
+    }else{
+        passwordStregthpara.innerHTML = "Password Strength: <span class=\"passColor passWeak\"> Weak Password</span>";
+    }
 }

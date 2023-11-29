@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/css/style.css">
     <title>Document</title>
 </head>
 <body>
+
+    <div class="main-container">
+        <div class="inner-container">
+            <input type="text" oninput="passwordChecker()" id="passwordInput" placeholder="Enter Your Password here">
+            <p id="passwordStregthpara">Password Strength:</p>
+            <p class="para-1">A Strong Password must have:</p>
+            <ul class="ulTestcase">
+                <li>At least 1 number: <span id="PassCheckerNumber" class="passColor passWeak">Fail</span></li>
+                <li>At least 1 lowercase letter: <span id="PassCheckerLower" class="passColor passWeak">Fail</span></li>
+                <li>At least 1 uppercase letter: <span id="PassCheckerUpper" class="passColor passWeak">Fail</span></li>
+                <li>At least 1 special charator: <span id="PassCheckerChar" class="passColor passWeak">Fail</span></li>
+                <li>More then 2 repeating charactor: <span id="PassCheckerRepeat" class="passColor passStronge">Pass</span></li>
+            </ul>
+        </div>
+    </div>
+
     <script src="resources/js/script.js"></script>
 </body>
 </html>
