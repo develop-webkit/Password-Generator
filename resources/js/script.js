@@ -6,7 +6,7 @@ const passwordCheckerEl = {
     passCheckerCharEl:"",
     passCheckerRepeatEl:"",
     passCheckerLengthtEl:""
-}
+} 
 
 passwordCheckerEl.passwordStregthpara = document.querySelector("#passwordStregthpara");
 passwordCheckerEl.passCheckerNumberEl = document.querySelector("#PassCheckerNumber");
@@ -71,47 +71,46 @@ function passwordChecker(){
     passwordStrength.strengthLevel =  passwordStrength.hasNumber + passwordStrength.hasUpperCase + passwordStrength.hasLowerCase + passwordStrength.hasSpecialChar + passwordStrength.hasGoodLength - passwordStrength.hasRepeater;
 
 
-    if(passwordStrength.hasNumber){
-        passwordCheckerEl.passCheckerNumberEl.innerHTML = "<span class=\"passColor passStronge\">Pass</span>"
-    }else{
-        passwordCheckerEl.passCheckerNumberEl.innerHTML = "<span class=\"passColor passWeak\">Fail</span>"
+
+    function strengthCheckPass(strengthConidtionBool,strengthConidtionPara){
+        if(strengthConidtionBool){
+            strengthConidtionPara.innerHTML = "<span class=\"passColor passStrong\">Pass</span>"
+        }else{
+            strengthConidtionPara.innerHTML = "<span class=\"passColor passWeak\">Fail</span>"
+        }
     }
 
-    if(passwordStrength.hasUpperCase){
-        passwordCheckerEl.passCheckerUpperEl.innerHTML = "<span class=\"passColor passStronge\">Pass</span>"
-    }else{
-        passwordCheckerEl.passCheckerUpperEl.innerHTML = "<span class=\"passColor passWeak\">Fail</span>"
+    function strengthCheckFail(strengthConidtionBool,strengthConidtionPara){
+        if(strengthConidtionBool){
+            strengthConidtionPara.innerHTML = "<span class=\"passColor passWeak\">Fail</span>"
+        }else{
+            strengthConidtionPara.innerHTML = "<span class=\"passColor passStrong\">Pass</span>"
+        }
     }
 
-    if(passwordStrength.hasLowerCase){
-        passwordCheckerEl.passCheckerLowerEl.innerHTML = "<span class=\"passColor passStronge\">Pass</span>"
-    }else{
-        passwordCheckerEl.passCheckerLowerEl.innerHTML = "<span class=\"passColor passWeak\">Fail</span>"
+    strengthCheckPass(passwordStrength.hasNumber,passwordCheckerEl.passCheckerNumberEl);
+    strengthCheckPass(passwordStrength.hasUpperCase,passwordCheckerEl.passCheckerUpperEl);
+    strengthCheckPass(passwordStrength.hasLowerCase,passwordCheckerEl.passCheckerLowerEl);
+    strengthCheckPass(passwordStrength.hasSpecialChar,passwordCheckerEl.passCheckerCharEl);
+    strengthCheckPass(passwordStrength.hasGoodLength,passwordCheckerEl.passCheckerLengthtEl);
+    strengthCheckFail(passwordStrength.hasRepeater,passwordCheckerEl.passCheckerRepeatEl);
+
+    switch(passwordStrength.strengthLevel ){
+        case 1:
+        case 2:
+        case 3:
+            StrengthLevelChange("Weak");
+        break;
+        case 4:
+            StrengthLevelChange("Medium");
+        break;
+        case 5:
+            StrengthLevelChange("Strong");
+        break;
     }
 
-    if(passwordStrength.hasSpecialChar){
-        passwordCheckerEl.passCheckerCharEl.innerHTML = "<span class=\"passColor passStronge\">Pass</span>"
-    }else{
-        passwordCheckerEl.passCheckerCharEl.innerHTML = "<span class=\"passColor passWeak\">Fail</span>"
+    function StrengthLevelChange(StrengthLevelAssignment ){
+        passwordCheckerEl.passwordStregthpara.innerHTML = `Password Strength: <span class=\"passColor pass${StrengthLevelAssignment} \"> ${StrengthLevelAssignment} PassWord </span>`
     }
 
-    if(passwordStrength.hasGoodLength){
-        passwordCheckerEl.passCheckerLengthtEl.innerHTML = "<span class=\"passColor passStronge\">Pass</span>"
-    }else{
-        passwordCheckerEl.passCheckerLengthtEl.innerHTML = "<span class=\"passColor passWeak\">Fail</span>"
-    }
-
-    if(passwordStrength.hasRepeater){
-        passwordCheckerEl.passCheckerRepeatEl.innerHTML = "<span class=\"passColor passWeak\">Fail</span>"
-    }else{
-        passwordCheckerEl.passCheckerRepeatEl.innerHTML = "<span class=\"passColor passStronge\">Pass</span>"
-    }
-
-    if(passwordStrength.strengthLevel > 4){
-        passwordCheckerEl.passwordStregthpara.innerHTML = "Password Strength: <span class=\"passColor passStronge\"> Strong Password</span>";
-    }else if(passwordStrength.strengthLevel > 3){
-        passwordCheckerEl.passwordStregthpara.innerHTML = "Password Strength: <span class=\"passColor passmedium\"> Medium Password</span>";
-    }else{
-        passwordCheckerEl.passwordStregthpara.innerHTML = "Password Strength: <span class=\"passColor passWeak\"> Weak Password</span>";
-    }
 }
