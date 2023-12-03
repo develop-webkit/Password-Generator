@@ -98,7 +98,7 @@ function passwordChecker(){
     switch(passwordStrength.strengthLevel ){
         case 1:
         case 2:
-        case 3:
+        case 3: 
             StrengthLevelChange("Weak");
         break;
         case 4:
@@ -110,7 +110,7 @@ function passwordChecker(){
     }
 
     function StrengthLevelChange(StrengthLevelAssignment ){
-        passwordCheckerEl.passwordStregthpara.innerHTML = `Password Strength: <span class=\"passColor pass${StrengthLevelAssignment} \"> ${StrengthLevelAssignment} PassWord </span>`
+        passwordCheckerEl.passwordStregthpara.innerHTML = `Password Strength: <span class=\"passColor pass${StrengthLevelAssignment} \"> ${StrengthLevelAssignment} Password </span>`
     }
 
 }
