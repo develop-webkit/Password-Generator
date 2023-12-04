@@ -18,48 +18,51 @@ body{
     max-height: 100%;
 }
 
+.main-inner-block{
+    display: flex;
+    gap:20px;
+}
+
 .inner-container{
     width: 500px;
-    margin: auto;
-    padding:30px 15px;
+    padding:20px 15px;
     background-color:rgb(255 255 255 / 45%);
     border:2px solid #4dc7f8;
     border-radius: 5px;
 }
 
 #passwordInput{
-border:1px solid #e3e3e3;
-padding:7px 5px;
-border-radius:2px;
-width:100%;
+    border:1px solid #e3e3e3;
+    padding:7px 5px;
+    border-radius:2px;
+    width:100%;
 }
 
 #passwordInput:focus-visible{
-outline:none;
+    outline:none;
 }
  
 #passwordStregthpara{
-font-weight:bold;
-color:#4c55d4;
+    font-weight:bold;
+    color:#4c55d4;
 }
 
 .passColor {
-font-weight:400;
+    font-weight:400;
 }
 
 .passWeak{
-color:red;
+    color:red;
 }
 
 .passMedium{
-color:#ff8700fa;
+    color:#ff8700fa;
 }
 
 .passStrong{
-color:green;
+    color:green;
 }
   
-
 .para-1{
     font-weight: bold;
     color: #4c55d4;
@@ -73,4 +76,36 @@ color:green;
     color:#4c55d4;
 }
     
-    
+.generatePasswordBtn{
+    background-color:#4c55d4;
+    border:none;
+    color:#fff;
+    display:block;
+    max-width: 100%;
+    width:100%;
+    padding:10px 15px;
+    cursor: pointer;
+    font-size:17px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+.checkLabelBlock{
+    margin-top:15px;
+}
+
+.checkLabel{
+    display:block;
+    margin-top:10px;
+}
+
+.rangeNumberLabel #rangeNumber{
+  width:40px;
+  vertical-align: bottom;
+}
+
+#rangeSlider{
+  width:80%;
+  height:4px;
+  background-color:#4C55D4;
+}

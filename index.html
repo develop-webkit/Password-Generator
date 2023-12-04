@@ -1,29 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="resources/css/style.css">
     <title>Document</title>
 </head>
+
 <body>
 
     <div class="main-container">
-        <div class="inner-container">
-            <input type="text" oninput="passwordChecker()" id="passwordInput" placeholder="Enter Your Password here">
-            <p id="passwordStregthpara">Password Strength:</p>
-            <p class="para-1">A Strong Password must have:</p>
-            <ul class="ulTestcase">
-                <li>At least 1 number: <span id="PassCheckerNumber" class="passColor passWeak">Fail</span></li>
-                <li>At least 1 lowercase letter: <span id="PassCheckerLower" class="passColor passWeak">Fail</span></li>
-                <li>At least 1 uppercase letter: <span id="PassCheckerUpper" class="passColor passWeak">Fail</span></li>
-                <li>At least 1 special charator: <span id="PassCheckerChar" class="passColor passWeak">Fail</span></li>
-                <li>At least 12 charator long: <span id="PassCheckerLength" class="passColor passWeak">Fail</span></li>
-                <li>Doesn't have 3 repeating charactor: <span id="PassCheckerRepeat" class="passColor passStrong">Pass</span></li>
-            </ul>
+        <div class="main-inner-block">
+            <div class="inner-container">
+                <input type="text" oninput="passwordChecker()" id="passwordInput" placeholder="Enter Your Password here">
+                <p id="passwordStregthpara">Password Strength:</p>
+                <p class="para-1">A Strong Password must have:</p>
+                <ul class="ulTestcase">
+                    <li>At least 1 number: <span id="PassCheckerNumber" class="passColor passWeak">Fail</span></li>
+                    <li>At least 1 lowercase letter: <span id="PassCheckerLower" class="passColor passWeak">Fail</span></li>
+                    <li>At least 1 uppercase letter: <span id="PassCheckerUpper" class="passColor passWeak">Fail</span></li>
+                    <li>At least 1 special charator: <span id="PassCheckerChar" class="passColor passWeak">Fail</span></li>
+                    <li>At least 12 charator long: <span id="PassCheckerLength" class="passColor passWeak">Fail</span></li>
+                    <li>Doesn't have 3 repeating charactor: <span id="PassCheckerRepeat"
+                            class="passColor passStrong">Pass</span></li>
+                </ul>
+            </div>
+            <div class="inner-container">
+                <button type="button" onclick="passwordGenerator();" class="generatePasswordBtn">Generate Password</button>
+                <div class="checkLabelBlock">
+                    <label class="checkLabel rangeNumberLabel" for="rangeNumber">
+                        Password length:
+                        <input title="Length of password" oninput="rangeNumberChange();" id="rangeNumber" type="number" value="12">
+                        Volume (between 0 and 99):
+                    </label>
+                    <label class="checkLabel" for="rangeSlider">
+                        <input title="Length of password slider" oninput="rangeSliderChange();" value="12" type="range" id="rangeSlider"  min="1" max="99" placeholder="Rang">
+                    </label>
+                    <label class="checkLabel" for="lowercaseCheck">
+                        <input id="lowercaseCheck" onclick="passwordGenerator();" type="checkbox">
+                        Lowercase (abc)
+                    </label>    
+                    <label class="checkLabel" for="uppercaseCheck">
+                        <input id="uppercaseCheck" onclick="passwordGenerator();" type="checkbox">
+                        Uppercase (ABC)
+                    </label>    
+                    <label class="checkLabel" for="numberCheck">
+                        <input id="numberCheck" onclick="passwordGenerator();" type="checkbox">
+                        Numbers (123)
+                    </label>    
+                    <label class="checkLabel" for="symbolsCheck">
+                        <input id="symbolsCheck" onclick="passwordGenerator();" type="checkbox">
+                        Randomized symbols (!#$)
+                    </label>    
+
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="resources/js/script.js"></script>
 </body>
+
 </html>

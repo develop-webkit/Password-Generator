@@ -6,7 +6,23 @@ const passwordCheckerEl = {
     passCheckerCharEl:"",
     passCheckerRepeatEl:"",
     passCheckerLengthtEl:""
-} 
+}
+
+function rangeNumberChange(){
+    let rangeNumberEl = document.querySelector("#rangeNumber").value;
+    let rangSliderEl = document.querySelector("#rangeSlider");
+    rangeNumberEl.value;
+    rangSliderEl.value = rangeNumberEl;
+    passwordGenerator();
+}
+
+function rangeSliderChange(){
+    let rangeNumberEl = document.querySelector("#rangeNumber");
+    let rangSliderEl = document.querySelector("#rangeSlider").value;
+    rangSliderEl.value;
+    rangeNumberEl.value = rangSliderEl;
+    passwordGenerator();
+}
 
 passwordCheckerEl.passwordStregthpara = document.querySelector("#passwordStregthpara");
 passwordCheckerEl.passCheckerNumberEl = document.querySelector("#PassCheckerNumber");
@@ -16,11 +32,12 @@ passwordCheckerEl.passCheckerCharEl = document.querySelector("#PassCheckerChar")
 passwordCheckerEl.passCheckerRepeatEl = document.querySelector("#PassCheckerRepeat");
 passwordCheckerEl.passCheckerLengthtEl = document.querySelector("#PassCheckerLength");
 
+
+
 let CharPattern = /\!|\@|\#|\%|\&|\|\(|\^|\*|\(|\)|\-|\+|\_|\=|\?|\>|\<|\,|\;\:|\"|\{|\}|\[|\]|\'|\/|\.|\`|\~/;
 let upperCasePattern = /[A-Z]/;
 let lowerCasePattern = /[a-z]/;
 let numberPattern = /[0-9]/;
-
 
 const passwordStrength = {
     strengthLevel:0,
@@ -30,8 +47,14 @@ const passwordStrength = {
     hasSpecialChar:false, 
     hasGoodLength:false, 
     hasRepeater:false,
-
 } 
+
+
+
+function passwordGenerator(){
+    
+    console.log("password Generate run");
+}
 
 function passwordChecker(){
     let passwordTest = document.querySelector("#passwordInput").value;
