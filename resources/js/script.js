@@ -8,19 +8,16 @@ const passwordCheckerEl = {
     passCheckerLengthtEl:""
 }
 
+let rangeNumberEl = document.querySelector("#rangeNumber");
+let rangSliderEl = document.querySelector("#rangeSlider");
+
 function rangeNumberChange(){
-    let rangeNumberEl = document.querySelector("#rangeNumber").value;
-    let rangSliderEl = document.querySelector("#rangeSlider");
-    rangeNumberEl.value;
-    rangSliderEl.value = rangeNumberEl;
+    rangSliderEl.value = rangeNumberEl.value;
     passwordGenerator();
 }
 
 function rangeSliderChange(){
-    let rangeNumberEl = document.querySelector("#rangeNumber");
-    let rangSliderEl = document.querySelector("#rangeSlider").value;
-    rangSliderEl.value;
-    rangeNumberEl.value = rangSliderEl;
+    rangeNumberEl.value = rangSliderEl.value;
     passwordGenerator();
 }
 
@@ -50,14 +47,57 @@ const passwordStrength = {
 } 
 
 
-
 function passwordGenerator(){
-    
-    console.log("password Generate run");
+    let passwordTestLocal = "";
+    for(let i=0;i< rangeNumberEl.value;i++){
+        switch(Math.ceil(Math.random() * 4)){
+            case 1:
+                passwordTestLocal+= randomLower();
+            break;
+            case 2:
+                passwordTestLocal+= randomUpper();
+            break;
+            case 3:
+                passwordTestLocal+= randomNumber();
+            break;
+            case 4:
+                passwordTestLocal+= randomChar();
+            break;
+        }
+    }
+    passwordChecker(passwordTestLocal);
 }
 
-function passwordChecker(){
-    let passwordTest = document.querySelector("#passwordInput").value;
+function randomLower(){
+    let lowerCaseList = "abcdefghijklmnopqrstuvwxyz"
+    return lowerCaseList.charAt( Math.floor(Math.random() * 26) );
+}
+
+function randomUpper(){
+    let upperCaseList = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    return upperCaseList.charAt( Math.floor(Math.random() * 26) )
+}
+
+function randomNumber(){
+    return randomNumberGenerated = Math.floor(Math.random() * 10);
+}
+
+function randomChar(){
+    let charList = "(!@#$%^&*(_-=`~[]{}|;'<>?,./+)"
+    return charList.charAt( Math.floor( Math.random() * 30 ) )
+}
+
+let passwordTest = document.querySelector("#passwordInput");
+
+function passwordChecker(passwordTestLocal){
+    if(passwordTestLocal.length){
+        passwordTest = passwordTestLocal;
+        document.querySelector("#passwordInput").value = passwordTestLocal;
+        console.log(passwordTest);
+    }else{
+        passwordTest = document.querySelector("#passwordInput").value; 
+    }
+
 
     passwordStrength.hasNumber = false;
     passwordStrength.hasUpperCase = false;
@@ -82,7 +122,7 @@ function passwordChecker(){
         }
     }
 
-    if(passwordTest.length > 12){
+    if(passwordTest.length > 11){
         passwordStrength.hasGoodLength = true;
     }
 

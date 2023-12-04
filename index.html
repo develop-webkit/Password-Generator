@@ -13,16 +13,16 @@
     <div class="main-container">
         <div class="main-inner-block">
             <div class="inner-container">
-                <input type="text" oninput="passwordChecker()" id="passwordInput" placeholder="Enter Your Password here">
+                <input type="text" oninput="passwordChecker(0)" id="passwordInput" placeholder="Enter Your Password here">
                 <p id="passwordStregthpara">Password Strength:</p>
                 <p class="para-1">A Strong Password must have:</p>
                 <ul class="ulTestcase">
                     <li>At least 1 number: <span id="PassCheckerNumber" class="passColor passWeak">Fail</span></li>
                     <li>At least 1 lowercase letter: <span id="PassCheckerLower" class="passColor passWeak">Fail</span></li>
                     <li>At least 1 uppercase letter: <span id="PassCheckerUpper" class="passColor passWeak">Fail</span></li>
-                    <li>At least 1 special charator: <span id="PassCheckerChar" class="passColor passWeak">Fail</span></li>
-                    <li>At least 12 charator long: <span id="PassCheckerLength" class="passColor passWeak">Fail</span></li>
-                    <li>Doesn't have 3 repeating charactor: <span id="PassCheckerRepeat"
+                    <li>At least 1 special charater: <span id="PassCheckerChar" class="passColor passWeak">Fail</span></li>
+                    <li>At least 12 charater long: <span id="PassCheckerLength" class="passColor passWeak">Fail</span></li>
+                    <li>Doesn't have 3 repeating charater: <span id="PassCheckerRepeat"
                             class="passColor passStrong">Pass</span></li>
                 </ul>
             </div>
@@ -31,8 +31,8 @@
                 <div class="checkLabelBlock">
                     <label class="checkLabel rangeNumberLabel" for="rangeNumber">
                         Password length:
-                        <input title="Length of password" oninput="rangeNumberChange();" id="rangeNumber" type="number" value="12">
-                        Volume (between 0 and 99):
+                        <input title="Length of password" oninput="rangeNumberChange();" id="rangeNumber" type="number" value="12" min="1" max="99">
+                        Volume (between 1 and 99):
                     </label>
                     <label class="checkLabel" for="rangeSlider">
                         <input title="Length of password slider" oninput="rangeSliderChange();" value="12" type="range" id="rangeSlider"  min="1" max="99" placeholder="Rang">
