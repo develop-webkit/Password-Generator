@@ -11,6 +11,11 @@ const passwordCheckerEl = {
 let rangeNumberEl = document.querySelector("#rangeNumber");
 let rangSliderEl = document.querySelector("#rangeSlider");
 
+let uppercaseCheckEl = document.querySelector("#uppercaseCheck");
+let lowercaseCheckEl = document.querySelector("#lowercaseCheck");
+let numberCheckEl = document.querySelector("#numberCheck");
+let symbolCheckEl = document.querySelector("#symbolsCheck");
+
 function rangeNumberChange(){
     rangSliderEl.value = rangeNumberEl.value;
     passwordGenerator();
@@ -18,6 +23,17 @@ function rangeNumberChange(){
 
 function rangeSliderChange(){
     rangeNumberEl.value = rangSliderEl.value;
+    passwordGenerator();
+}
+
+function checkboxChange(){
+    if((uppercaseCheckEl.checked + lowercaseCheckEl.checked + numberCheckEl.checked + symbolCheckEl.checked) == 1){
+        document.querySelector(".checkLabelBlock input[type='checkbox']:checked").setAttribute("disabled","disabled"); 
+    }else{
+        document.querySelectorAll(".checkLabelBlock input[type='checkbox']:checked").forEach((item) => {
+            item.removeAttribute("disabled");
+        });
+    }
     passwordGenerator();
 }
 
@@ -49,21 +65,35 @@ const passwordStrength = {
 
 function passwordGenerator(){
     let passwordTestLocal = "";
-    for(let i=0;i< rangeNumberEl.value;i++){
+    let i = rangeNumberEl.value;
+
+    while(i){
         switch(Math.ceil(Math.random() * 4)){
             case 1:
-                passwordTestLocal+= randomLower();
+                if(lowercaseCheckEl.checked){
+                    passwordTestLocal+= randomLower();
+                    i--;
+                }
             break;
             case 2:
-                passwordTestLocal+= randomUpper();
+                if(uppercaseCheckEl.checked){
+                    passwordTestLocal+= randomUpper();
+                    i--;
+                }
             break;
             case 3:
-                passwordTestLocal+= randomNumber();
+                if(numberCheckEl.checked){
+                    passwordTestLocal+= randomNumber();
+                    i--;
+                }
             break;
             case 4:
-                passwordTestLocal+= randomChar();
+                if(symbolCheckEl.checked){
+                    passwordTestLocal+= randomChar();
+                    i--;
+                }
             break;
-        }
+        } 
     }
     passwordChecker(passwordTestLocal);
 }
@@ -93,7 +123,6 @@ function passwordChecker(passwordTestLocal){
     if(passwordTestLocal.length){
         passwordTest = passwordTestLocal;
         document.querySelector("#passwordInput").value = passwordTestLocal;
-        console.log(passwordTest);
     }else{
         passwordTest = document.querySelector("#passwordInput").value; 
     }
