@@ -16,6 +16,24 @@ let lowercaseCheckEl = document.querySelector("#lowercaseCheck");
 let numberCheckEl = document.querySelector("#numberCheck");
 let symbolCheckEl = document.querySelector("#symbolsCheck");
 
+
+let passwordTest = document.querySelector("#passwordInput");
+
+let CharPattern = /\!|\@|\#|\%|\&|\|\(|\^|\*|\(|\)|\-|\+|\_|\=|\?|\>|\<|\,|\;\:|\"|\{|\}|\[|\]|\'|\/|\.|\`|\~/;
+let upperCasePattern = /[A-Z]/;
+let lowerCasePattern = /[a-z]/;
+let numberPattern = /[0-9]/;
+
+const passwordStrength = {
+    strengthLevel:0,
+    hasNumber:false,
+    hasUpperCase:false, 
+    hasLowerCase:false, 
+    hasSpecialChar:false, 
+    hasGoodLength:false, 
+    hasRepeater:false,
+} 
+
 function rangeNumberChange(){
     rangSliderEl.value = rangeNumberEl.value;
     passwordGenerator();
@@ -34,7 +52,7 @@ function checkboxChange(){
             item.removeAttribute("disabled");
         });
     }
-    passwordGenerator();
+    passwordGenerator()
 }
 
 passwordCheckerEl.passwordStregthpara = document.querySelector("#passwordStregthpara");
@@ -44,23 +62,6 @@ passwordCheckerEl.passCheckerUpperEl = document.querySelector("#PassCheckerUpper
 passwordCheckerEl.passCheckerCharEl = document.querySelector("#PassCheckerChar");
 passwordCheckerEl.passCheckerRepeatEl = document.querySelector("#PassCheckerRepeat");
 passwordCheckerEl.passCheckerLengthtEl = document.querySelector("#PassCheckerLength");
-
-
-
-let CharPattern = /\!|\@|\#|\%|\&|\|\(|\^|\*|\(|\)|\-|\+|\_|\=|\?|\>|\<|\,|\;\:|\"|\{|\}|\[|\]|\'|\/|\.|\`|\~/;
-let upperCasePattern = /[A-Z]/;
-let lowerCasePattern = /[a-z]/;
-let numberPattern = /[0-9]/;
-
-const passwordStrength = {
-    strengthLevel:0,
-    hasNumber:false,
-    hasUpperCase:false, 
-    hasLowerCase:false, 
-    hasSpecialChar:false, 
-    hasGoodLength:false, 
-    hasRepeater:false,
-} 
 
 
 function passwordGenerator(){
@@ -116,8 +117,6 @@ function randomChar(){
     let charList = "(!@#$%^&*(_-=`~[]{}|;'<>?,./+)"
     return charList.charAt( Math.floor( Math.random() * 30 ) )
 }
-
-let passwordTest = document.querySelector("#passwordInput");
 
 function passwordChecker(passwordTestLocal){
     if(passwordTestLocal.length){
