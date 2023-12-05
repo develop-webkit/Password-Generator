@@ -13,7 +13,10 @@
     <div class="main-container">
         <div class="main-inner-block">
             <div class="inner-container">
-                <input type="text" oninput="passwordChecker(0)" id="passwordInput" placeholder="Enter Your Password here">
+                <div class="main-input">
+                    <input type="text" oninput="passwordChecker(0)" id="passwordInput" placeholder="Enter Your Password here">
+                    <button type="button" title="Copy Password" onclick="copyPass()" class="copy-button">Copy</button>
+                </div>
                 <p id="passwordStregthpara">Password Strength:</p>
                 <p class="para-1">A Strong Password must have:</p>
                 <ul class="ulTestcase">

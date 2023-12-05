@@ -10,13 +10,10 @@ const passwordCheckerEl = {
 
 let rangeNumberEl = document.querySelector("#rangeNumber");
 let rangSliderEl = document.querySelector("#rangeSlider");
-
 let uppercaseCheckEl = document.querySelector("#uppercaseCheck");
 let lowercaseCheckEl = document.querySelector("#lowercaseCheck");
 let numberCheckEl = document.querySelector("#numberCheck");
 let symbolCheckEl = document.querySelector("#symbolsCheck");
-
-
 let passwordTest = document.querySelector("#passwordInput");
 
 let CharPattern = /\!|\@|\#|\%|\&|\|\(|\^|\*|\(|\)|\-|\+|\_|\=|\?|\>|\<|\,|\;\:|\"|\{|\}|\[|\]|\'|\/|\.|\`|\~/;
@@ -33,6 +30,12 @@ const passwordStrength = {
     hasGoodLength:false, 
     hasRepeater:false,
 } 
+
+function copyPass(){
+    if(passwordTest.length){
+        navigator.clipboard.writeText(passwordTest);
+    }
+}
 
 function rangeNumberChange(){
     rangSliderEl.value = rangeNumberEl.value;
