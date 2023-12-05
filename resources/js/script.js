@@ -66,32 +66,27 @@ passwordCheckerEl.passCheckerLengthtEl = document.querySelector("#PassCheckerLen
 
 function passwordGenerator(){
     let passwordTestLocal = "";
-    let i = rangeNumberEl.value;
-
-    while(i){
+    
+    while(passwordTestLocal.length < rangeNumberEl.value){
         switch(Math.ceil(Math.random() * 4)){
             case 1:
                 if(lowercaseCheckEl.checked){
                     passwordTestLocal+= randomLower();
-                    i--;
                 }
             break;
             case 2:
                 if(uppercaseCheckEl.checked){
                     passwordTestLocal+= randomUpper();
-                    i--;
                 }
             break;
             case 3:
                 if(numberCheckEl.checked){
                     passwordTestLocal+= randomNumber();
-                    i--;
                 }
             break;
             case 4:
                 if(symbolCheckEl.checked){
                     passwordTestLocal+= randomChar();
-                    i--;
                 }
             break;
         } 
@@ -126,20 +121,15 @@ function passwordChecker(passwordTestLocal){
         passwordTest = document.querySelector("#passwordInput").value; 
     }
 
-
     passwordStrength.hasNumber = false;
     passwordStrength.hasUpperCase = false;
     passwordStrength.hasLowerCase = false;
     passwordStrength.hasSpecialChar = false;
     passwordStrength.hasGoodLength = false;
     passwordStrength.hasRepeater = false;
-
     passwordStrength.hasNumber = paternchecker(numberPattern);
-
     passwordStrength.hasUpperCase = paternchecker(upperCasePattern);
-
     passwordStrength.hasSpecialChar = paternchecker(CharPattern);
-
     passwordStrength.hasLowerCase = paternchecker(lowerCasePattern);
 
     function paternchecker(paternPara){
@@ -160,8 +150,6 @@ function passwordChecker(passwordTestLocal){
         }
     }
     passwordStrength.strengthLevel =  passwordStrength.hasNumber + passwordStrength.hasUpperCase + passwordStrength.hasLowerCase + passwordStrength.hasSpecialChar + passwordStrength.hasGoodLength - passwordStrength.hasRepeater;
-
-
 
     function strengthCheckPass(strengthConidtionBool,strengthConidtionPara){
         if(strengthConidtionBool){
@@ -203,5 +191,4 @@ function passwordChecker(passwordTestLocal){
     function StrengthLevelChange(StrengthLevelAssignment ){
         passwordCheckerEl.passwordStregthpara.innerHTML = `Password Strength: <span class=\"passColor pass${StrengthLevelAssignment} \"> ${StrengthLevelAssignment} Password </span>`
     }
-
 }
